@@ -133,9 +133,9 @@ class VPDSummaryService @Inject()(
                 HttpVerbs.GET
               )
             )
-          } else if (r.overdueReturnsCount == 1 && r.dueReturnsCount == 0) {
-            obligationDetails
-              .find(obligationService.isOverdue(_, LocalDate.now(clock)))
+        } else if (r.overdueReturnsCount == 1 && r.dueReturnsCount == 0) {
+          obligationDetails
+            .find(obligationService.isOverdue(_, LocalDate.now(clock)))
               .map(obligation =>
                 CompleteReturn(
                   s"${config.completeReturnUrlPrefix}?period=${obligation.periodKey}",
